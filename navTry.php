@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<?php
+                    
+
+                    $msg = '';
+                    if (isset($_POST['login']) && !empty($_POST['email']) && !empty($_POST['password'])) 
+                    {   
+                        $em = $_POST['email'];
+                        $password = $_POST['password'];
+
+                        if($em=="admin@meubilar.com" && $password=="admin@123")
+                        {
+                             session_start();
+                            $_SESSION['valid'] = true;
+                            $_SESSION['timeout'] = time();
+                            $_SESSION['role']='admin';
+                            header("Location: addCategory.php");
+                        }
+                        else
+                        {
+                            $msg = "Invalid email or password";
+                            //echo $msg;
+                            echo '<script> alert("'.$msg.'")</script>';        
+                        }
+                    }
+                    
+
+                 ?>  
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- Mobile Web-app fullscreen -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Meta tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="assets/images/favicon.png">
+
+    <!--Title-->
+    <title>Meubilar - Furniture Company</title>
+
+    <!--CSS styles-->
+    <link rel="stylesheet" media="all" href="css/bootstrap.css" />
+    <link rel="stylesheet" media="all" href="css/animate.css" />
+    <link rel="stylesheet" media="all" href="css/font-awesome.css" />
+    <link rel="stylesheet" media="all" href="css/furniture-icons.css" />
+    <link rel="stylesheet" media="all" href="css/linear-icons.css" />
+    <link rel="stylesheet" media="all" href="css/magnific-popup.css" />
+    <link rel="stylesheet" media="all" href="css/owl.carousel.css" />
+    <link rel="stylesheet" media="all" href="css/ion-range-slider.css" />
+    <link rel="stylesheet" media="all" href="css/theme.css" />
+
+    <!--Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600&amp;subset=latin-ext" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <!-- <div class="page-loader"></div> -->
+
+    <div class="wrapper">
+
+        <!--Use class "navbar-fixed" or "navbar-default" -->
+        <!--If you use "navbar-fixed" it will be sticky menu on scroll (only for large screens)-->
+
+        <!-- ======================== Navigation ======================== -->
+
+        <nav class="navbar-fixed">
+
+            <div class="container">
+
+                <!-- ==========  Top navigation ========== -->
+
+                <div class="navigation navigation-top clearfix">
+                    <ul>
+                        <!--add active class for current page-->
+
+                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+
+                        <!--Currency selector-->
+<!-- 
+                        <li class="nav-settings">
+                            <a href="javascript:void(0);" class="nav-settings-value"> USD $</a>
+                            <ul class="nav-settings-list">
+                                <li>USD $</li>
+                                <li>EUR €</li>
+                                <li>CHF Fr.</li>
+                                <li>GBP £</li>
+                            </ul>
+                        </li> -->
+
+                        <!--Language selector-->
+
+                        <!-- <li class="nav-settings">
+                            <a href="javascript:void(0);" class="nav-settings-value"> ENG</a>
+                            <ul class="nav-settings-list">
+                                <li>ENG</li>
+                                <li>GER</li>
+                                <li>لعربية</li>
+                                <li>עִבְרִית</li>
+                            </ul>
+                        </li> -->
+                        <li><a href="javascript:void(0);" class="open-login"><i class="icon icon-user"></i></a></li>
+                        <!-- <li><a href="javascript:void(0);" class="open-search"><i class="icon icon-magnifier"></i></a></li> -->
+                        <li><a href="javascript:void(0);" class="open-cart"><i class="icon icon-cart"></i> <span>3</span></a></li>
+                    </ul>
+                </div> <!--/navigation-top-->
+
+                <!-- ==========  Main navigation ========== -->
+
+                <div class="navigation navigation-main">
+
+                    <!-- Setup your logo here-->
+
+                    <a href="index.php" class="logo"><img src="assets/images/logo-2.png" alt=""/></a>
+
+                    <!-- Mobile toggle menu -->
+
+                    <a href="#" class="open-menu"><i class="icon icon-menu"></i></a>
+
+                    <!-- Convertible menu (mobile/desktop)-->
+
+                    <div class="floating-menu">
+
+                        <!-- Mobile toggle menu trigger-->
+
+                        <div class="close-menu-wrapper">
+                            <span class="close-menu"><i class="icon icon-cross"></i></span>
+                        </div>
+
+                        <ul>
+                            <li><a href="index.php">Home</a></li>
+                
+                            <!-- Mega menu dropdown -->
+
+                            <li>
+                                <a href="#">Products <span class="open-dropdown"><i class="fa fa-angle-down"></i></span></a>
+                                <div class="navbar-dropdown">
+                                    <div class="navbar-box">
+                                        <div class="box-2">
+                                            <div class="box clearfix">
+                                                <div class="row">
+                                                    <div class="clearfix">
+                                                        <!-- <div class="col-md-3">
+                                                            <ul>
+                                                                <li class="label">Seating</li>
+                                                                <li><a href="javascript:void(0);">Benches</a></li>
+                                                                <li><a href="javascript:void(0);">Submenu <span class="label label-warning">New</span></a></li>
+                                                                <li><a href="javascript:void(0);">Chaises</a></li>
+                                                                <li><a href="javascript:void(0);">Recliners</a></li>
+                                                            </ul>
+                                                        </div> -->
+                                                        <div class="col-md-3">
+                                                            <ul>
+                                                                <li class="label">Living Room</li>
+                                                                <li><a href="javascript:void(0);">Sofa</a></li>
+                                                                <li><a href="javascript:void(0);">Coffee Table</a></li>
+                                                                <li><a href="javascript:void(0);">FootStools</a></li>
+                                                                <li><a href="javascript:void(0);">End Tables <span class="label label-success">Trending</span></a></li>
+                                                                <!-- <li><a href="javascript:void(0);">Sideboards </a></li> -->
+                                                            </ul>
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            <ul>
+                                                                <li class="label">Office Furniture</li>
+                                                                <li><a href="javascript:void(0);">Consoles</a></li>
+                                                                <li><a href="javascript:void(0);">Desks</a></li>
+                                                                <li><a href="javascript:void(0);">Cabinets</a></li>
+                                                                <li><a href="javascript:void(0);">Office Chairs</a></li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            <ul>
+                                                                <li class="label">Hotel Furniture</li>
+                                                                <li><a href="javascript:void(0);">Dining Chairs</a></li>
+                                                                <li><a href="javascript:void(0);"> </a></li>
+                                                                <li><a href="javascript:void(0);">Lounge Chairs <span class="label label-warning">Offer</span></a></li>
+                                                                <li><a href="javascript:void(0);">Stools</a></li>
+
+                                                            </ul>
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            <ul>
+                                                                <li class="label">Kitchen</li>
+                                                                <li><a href="javascript:void(0);">Kitchen types</a></li>
+                                                                <li><a href="javascript:void(0);">Kitchen elements <span class="label label-info">50%</span></a></li>
+                                                                <li><a href="javascript:void(0);">Bars</a></li>
+                                                                <li><a href="javascript:void(0);">Wall decoration</a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <div class="clearfix">
+                                                        
+                                                        <!-- <div class="col-md-3">
+                                                            <ul>
+                                                                <li class="label">Accessories</li>
+                                                                <li><a href="javascript:void(0);">Coat Racks</a></li>
+                                                                <li><a href="javascript:void(0);">Lazy bags <span class="label label-success">Info</span></a></li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            <ul>
+                                                                <li class="label">Beds</li>
+                                                                <li><a href="javascript:void(0);">Beds</a></li>
+                                                                <li><a href="javascript:void(0);">Sofabeds</a></li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            <ul>
+                                                                <li class="label">Entertainment</li>
+                                                                <li><a href="javascript:void(0);">Wall units <span class="label label-warning">Popular</span></a></li>
+                                                                <li><a href="javascript:void(0);">Media sets</a></li>
+                                                                <li><a href="javascript:void(0);">Decoration</a></li>
+                                                            </ul>
+                                                        </div> -->
+                                                    </div>
+                                                </div>
+                                            </div> <!--/box-->
+                                        </div> <!--/box-2-->
+                                    </div> <!--/navbar-box-->
+                                </div> <!--/navbar-dropdown-->
+                            </li>
+
+                            <!-- Simple menu link-->
+                            <li><a href="about.php">About us</a></li>
+                            <li><a href="contact.php">Contact</a></li>
+                           
+                        </ul>
+                    </div> <!--/floating-menu-->
+                </div> <!--/navigation-main-->
+
+                <!-- ==========  Search wrapper ========== -->
+
+                <div class="search-wrapper">
+
+                    <!-- Search form -->
+                    <input class="form-control" placeholder="Search..." />
+                    <button class="btn btn-main btn-search">Go!</button>
+
+                    <!-- Search results - live search -->
+                    <div class="search-results">
+                        <div class="search-result-items">
+                            <div class="title h4">Products <a href="#" class="btn btn-clean-dark btn-xs">View all</a></div>
+                            <ul>
+                                <li><a href="#"><span class="id">42563</span> <span class="name">Green corner</span> <span class="category">Sofa</span></a></li>
+                                <li><a href="#"><span class="id">42563</span> <span class="name">Laura</span> <span class="category">Armchairs</span></a></li>
+                                <li><a href="#"><span class="id">42563</span> <span class="name">Nude</span> <span class="category">Dining tables</span></a></li>
+                                <li><a href="#"><span class="id">42563</span> <span class="name">Aurora</span> <span class="category">Nightstands</span></a></li>
+                                <li><a href="#"><span class="id">42563</span> <span class="name">Dining set</span> <span class="category">Kitchen</span></a></li>
+                                <li><a href="#"><span class="id">42563</span> <span class="name">Seat chair</span> <span class="category">Bar sets</span></a></li>
+                            </ul>
+                        </div> <!--/search-result-items-->
+                        <div class="search-result-items">
+                            <div class="title h4">Blog <a href="#" class="btn btn-clean-dark btn-xs">View all</a></div>
+                            <ul>
+                                <li><a href="#"><span class="id">01 Jan</span> <span class="name">Creating the Perfect Gallery Wall </span> <span class="category">Interior ideas</span></a></li>
+                                <li><a href="#"><span class="id">12 Jan</span> <span class="name">Making the Most Out of Your Kids Old Bedroom</span> <span class="category">Interior ideas</span></a></li>
+                                <li><a href="#"><span class="id">28 Dec</span> <span class="name">Have a look at our new projects!</span> <span class="category">Modern design</span></a></li>
+                                <li><a href="#"><span class="id">31 Sep</span> <span class="name">Decorating When You're Starting Out or Starting Over</span> <span class="category">Best of 2017</span></a></li>
+                                <li><a href="#"><span class="id">22 Sep</span> <span class="name">The 3 Tricks that Quickly Became Rules</span> <span class="category">Tips for you</span></a></li>
+                            </ul>
+                        </div> <!--/search-result-items-->
+                    </div> <!--/search-results-->
+                </div>
+
+                <!-- ==========  Login wrapper ========== -->
+
+                <div class="login-wrapper">
+
+                    <?php  
+                        // echo session_status();
+                        // if(session_status() == PHP_SESSION_NONE)
+                        // {
+                            
+                            if(isset($_SESSION['role']))
+                            {
+                                echo'<a href ="logout.php" >Logout</a>';
+                            }
+                            else 
+                            {
+                    ?>
+                    <form method="post">
+                        <div class="h4">Sign in</div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" id="exampleInputEmail1" name="email" placeholder="Email">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" id="exampleInputPassword1" name="password" placeholder="Password">
+                        </div>
+                        <!-- <div class="form-group">
+                            <a href="#forgotpassword" class="open-popup">Forgot password?</a>
+                            <a href="#createaccount" class="open-popup">Don't have an account?</a>
+                        </div> -->
+                        <input type="submit" class="btn btn-block btn-main" name="login" value="Submit">
+                    </form>
+                <?php
+             
+                            }   
+                ?>
+                </div>
+
+                <!-- ==========  Cart wrapper ========== -->
+
+                <div class="cart-wrapper">
+                    <div class="checkout">
+                        <div class="clearfix">
+
+                            <!--cart item-->
+
+                            <div class="row">
+
+                                <div class="cart-block cart-block-item clearfix">
+                                    <div class="image">
+                                        <a href="product.html"><img src="assets/images/product-1.png" alt="" /></a>
+                                    </div>
+                                    <div class="title">
+                                        <div><a href="product.html">Green corner</a></div>
+                                        <small>Green corner</small>
+                                    </div>
+                                    <div class="quantity">
+                                        <input type="number" value="2" class="form-control form-quantity" />
+                                    </div>
+                                    <div class="price">
+                                        <span class="final">$ 1.998</span>
+                                        <span class="discount">$ 2.666</span>
+                                    </div>
+                                    <!--delete-this-item-->
+                                    <span class="icon icon-cross icon-delete"></span>
+                                </div>
+
+                                <!--cart item-->
+
+                                <div class="cart-block cart-block-item clearfix">
+                                    <div class="image">
+                                        <a href="product.html"><img src="assets/images/product-2.png" alt="" /></a>
+                                    </div>
+                                    <div class="title">
+                                        <div><a href="product.html">Green corner</a></div>
+                                        <small>Green corner</small>
+                                    </div>
+                                    <div class="quantity">
+                                        <input type="number" value="2" class="form-control form-quantity" />
+                                    </div>
+                                    <div class="price">
+                                        <span class="final">$ 1.998</span>
+                                        <span class="discount">$ 2.666</span>
+                                    </div>
+                                    <!--delete-this-item-->
+                                    <span class="icon icon-cross icon-delete"></span>
+                                </div>
+
+                                <!--cart item-->
+
+                                <div class="cart-block cart-block-item clearfix">
+                                    <div class="image">
+                                        <a href="product.html"><img src="assets/images/product-3.png" alt="" /></a>
+                                    </div>
+                                    <div class="title">
+                                        <div><a href="product.html">Green corner</a></div>
+                                        <small>Green corner</small>
+                                    </div>
+                                    <div class="quantity">
+                                        <input type="number" value="2" class="form-control form-quantity" />
+                                    </div>
+                                    <div class="price">
+                                        <span class="final">$ 1.998</span>
+                                        <span class="discount">$ 2.666</span>
+                                    </div>
+                                    <!--delete-this-item-->
+                                    <span class="icon icon-cross icon-delete"></span>
+                                </div>
+
+                                <!--cart item-->
+
+                                <div class="cart-block cart-block-item clearfix">
+                                    <div class="image">
+                                        <a href="product.html"><img src="assets/images/product-4.png" alt="" /></a>
+                                    </div>
+                                    <div class="title">
+                                        <div><a href="product.html">Green corner</a></div>
+                                        <small>Green corner</small>
+                                    </div>
+                                    <div class="quantity">
+                                        <input type="number" value="2" class="form-control form-quantity" />
+                                    </div>
+                                    <div class="price">
+                                        <span class="final">$ 1.998</span>
+                                        <span class="discount">$ 2.666</span>
+                                    </div>
+                                    <!--delete-this-item-->
+                                    <span class="icon icon-cross icon-delete"></span>
+                                </div>
+                            </div>
+
+                            <hr />
+
+                            <!--cart prices -->
+
+                            <div class="clearfix">
+                                <div class="cart-block cart-block-footer clearfix">
+                                    <div>
+                                        <strong>Discount 15%</strong>
+                                    </div>
+                                    <div>
+                                        <span>$ 159,00</span>
+                                    </div>
+                                </div>
+
+                                <div class="cart-block cart-block-footer clearfix">
+                                    <div>
+                                        <strong>Shipping</strong>
+                                    </div>
+                                    <div>
+                                        <span>$ 30,00</span>
+                                    </div>
+                                </div>
+
+                                <div class="cart-block cart-block-footer clearfix">
+                                    <div>
+                                        <strong>VAT</strong>
+                                    </div>
+                                    <div>
+                                        <span>$ 59,00</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <hr />
+
+                            <!--cart final price -->
+
+                            <div class="clearfix">
+                                <div class="cart-block cart-block-footer clearfix">
+                                    <div>
+                                        <strong>Total</strong>
+                                    </div>
+                                    <div>
+                                        <div class="h4 title">$ 1259,00</div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <!--cart navigation -->
+
+                            <div class="cart-block-buttons clearfix">
+                                <div class="row">
+                                    <div class="col-xs-6">
+                                        <a href="products-grid.html" class="btn btn-clean-dark">Continue shopping</a>
+                                    </div>
+                                    <div class="col-xs-6 text-right">
+                                        <a href="checkout-1.html" class="btn btn-main"><span class="icon icon-cart"></span> Checkout</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div> <!--/checkout-->
+                </div> <!--/cart-wrapper-->
+            </div> <!--/container-->
+        </nav>

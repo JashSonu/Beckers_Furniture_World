@@ -1,0 +1,14 @@
+1. Facebook link missing - Fixed 
+2. Logo padding bottom - Fixed
+4. In Footer the Get Directions - Fixed
+5. Need link to Meubilar Brochure to put it in the footer link of 'Download Brochure' - Fixed
+6. Broken Link in product.php heading section - Fixed
+9. Change in Home page content - Fixed
+
+
+3. On the home page on clicking the popular products, we should redirect it to the products page - HOT
+7. Fetching Particular Category Name in prooduct.php page 
+8. The prooducts being fetched in the products page are not proper from the second row
+10. Pushing Veitnam number a bit below
+11. Change in About Page 
+12. Changing Image in contact.php
